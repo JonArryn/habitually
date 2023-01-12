@@ -17,7 +17,7 @@ const Habit = () => {
           <SubMenu subMenuItems={SUBMENU_ITEMS['/habit']} />
         </Grid>
         <Grid item>
-          <Grid container>
+          <Grid container spacing={2}>
             {habits.map((habit) => {
               return (
                 <Grid item key={habit.id}>

@@ -10,8 +10,12 @@ const SubMenu = ({ subMenuItems }: IProps) => {
   return (
     <Grid container>
       {subMenuItems.map((menuItem) => (
-        <Grid item>
-          <ActionButton text={menuItem.text} icon={menuItem.icon} />
+        <Grid item key={menuItem.text}>
+          <ActionButton
+            text={menuItem.text}
+            icon={menuItem.icon}
+            route={menuItem.route}
+          />
         </Grid>
       ))}
     </Grid>

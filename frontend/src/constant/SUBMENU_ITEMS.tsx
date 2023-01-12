@@ -6,6 +6,7 @@ import { ReactNode } from 'react';
 export interface SubMenuItem {
   text: string;
   icon: ReactNode;
+  route: string;
 }
 
 export type SubMenuItemObject = {
@@ -13,10 +14,34 @@ export type SubMenuItemObject = {
 };
 
 const SUBMENU_ITEMS: SubMenuItemObject = {
-  [ROUTES.HABIT]: [{ text: 'New Habit', icon: <AddIcon sx={{ mr: 1 }} /> }],
-  [ROUTES.UNHABIT]: [{ text: 'New UnHabit', icon: <AddIcon sx={{ mr: 1 }} /> }],
-  [ROUTES.ROUTINE]: [{ text: 'New Routine', icon: <AddIcon sx={{ mr: 1 }} /> }],
-  [ROUTES.TASK]: [{ text: 'New Task', icon: <AddIcon sx={{ mr: 1 }} /> }],
+  [ROUTES.HABIT]: [
+    {
+      text: 'New Habit',
+      icon: <AddIcon sx={{ mr: 1 }} />,
+      route: '/habit/create',
+    },
+  ],
+  [ROUTES.UNHABIT]: [
+    {
+      text: 'New UnHabit',
+      icon: <AddIcon sx={{ mr: 1 }} />,
+      route: '/unhabit/create',
+    },
+  ],
+  [ROUTES.ROUTINE]: [
+    {
+      text: 'New Routine',
+      icon: <AddIcon sx={{ mr: 1 }} />,
+      route: '/routine/create',
+    },
+  ],
+  [ROUTES.TASK]: [
+    {
+      text: 'New Task',
+      icon: <AddIcon sx={{ mr: 1 }} />,
+      route: '/task/create',
+    },
+  ],
 };
 
 export default SUBMENU_ITEMS;

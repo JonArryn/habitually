@@ -10,6 +10,7 @@ import Home from './page/Dashboard';
 import Routine from './page/Routine';
 import Task from './page/Task';
 import HabitDetail from './component/HabitDetail';
+import NewHabit from './page/NewHabit';
 
 const router = createBrowserRouter([
   {
@@ -20,6 +21,10 @@ const router = createBrowserRouter([
       {
         path: 'habit',
         element: <Habit />,
+      },
+      {
+        path: '/habit/create',
+        element: <NewHabit />,
       },
       { path: 'habit/:habitId', element: <HabitDetail /> },
       {
