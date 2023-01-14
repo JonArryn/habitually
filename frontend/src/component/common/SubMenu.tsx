@@ -1,6 +1,6 @@
 import Grid from '@mui/material/Grid';
-import { SubMenuItem } from '../constant/SUBMENU_ITEMS';
-import ActionButton from './common/ActionButton';
+import { SubMenuItem } from '../../constant/SUBMENU_ITEMS';
+import ActionButton from './ActionButton';
 
 interface IProps {
   subMenuItems: SubMenuItem[];

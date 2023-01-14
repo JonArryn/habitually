@@ -1,7 +1,6 @@
 import Grid from '@mui/material/Grid';
-import HabitCard from '../component/HabitCard';
-import SubMenu from '../component/SubMenu';
-import habits from '../constant/HABITS';
+import { Outlet } from 'react-router-dom';
+import SubMenu from '../component/common/SubMenu';
 import SUBMENU_ITEMS from '../constant/SUBMENU_ITEMS';
 
 const Habit = () => {
@@ -17,15 +16,7 @@ const Habit = () => {
           <SubMenu subMenuItems={SUBMENU_ITEMS['/habit']} />
         </Grid>
         <Grid item>
-          <Grid container spacing={2}>
-            {habits.map((habit) => {
-              return (
-                <Grid item key={habit.id}>
-                  <HabitCard habitData={habit} />
-                </Grid>
-              );
-            })}
-          </Grid>
+          <Outlet />
         </Grid>
       </Grid>
     </>
