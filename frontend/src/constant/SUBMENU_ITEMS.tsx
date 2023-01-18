@@ -2,6 +2,7 @@ import ROUTES from './ROUTES';
 
 import AddIcon from '@mui/icons-material/Add';
 import { ReactNode } from 'react';
+import { Home } from '@mui/icons-material';
 
 export interface SubMenuItem {
   text: string;
@@ -15,6 +16,7 @@ export type SubMenuItemObject = {
 
 const SUBMENU_ITEMS: SubMenuItemObject = {
   [ROUTES.HABIT]: [
+    { text: 'Habits Home', icon: <Home sx={{ mr: 1 }} />, route: '/habit' },
     {
       text: 'New Habit',
       icon: <AddIcon sx={{ mr: 1 }} />,
