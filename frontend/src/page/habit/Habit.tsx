@@ -3,8 +3,6 @@ import { Outlet } from 'react-router-dom';
 import SubMenu from '../../component/common/SubMenu';
 import SUBMENU_ITEMS from '../../constant/SUBMENU_ITEMS';
 
-import { HabitProvider } from '../../context/HabitProvider';
-
 const Habit = () => {
   return (
     <>
@@ -18,9 +16,7 @@ const Habit = () => {
           <SubMenu subMenuItems={SUBMENU_ITEMS['/habit']} />
         </Grid>
         <Grid item>
-          <HabitProvider>
-            <Outlet />
-          </HabitProvider>
+          <Outlet />
         </Grid>
       </Grid>
     </>

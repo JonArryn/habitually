@@ -21,7 +21,7 @@ const router = createBrowserRouter(
       <Route index element={<Home />} />
 
       <Route path='habit' element={<Habit />}>
-        <Route path='/habit' element={<HabitList />} />
+        <Route index path='/habit' element={<HabitList />} />
         <Route path='create' element={<NewHabit />} />
         <Route path=':habitId' element={<HabitDetail />} />
       </Route>

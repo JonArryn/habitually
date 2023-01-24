@@ -1,19 +1,21 @@
-import { useState, useEffect, useRef, useCallback } from 'react';
+import { useState, useEffect, useCallback } from 'react';
 import habits, { IHabit } from '../constant/HABITS';
-import { useParams } from 'react-router-dom';
 
 export interface IUseHabit {
   getAllHabits: () => IHabit[] | [];
   getCurrentHabit: () => IHabit | undefined;
   manageHabit: (habitId: string) => void;
   createNewHabit: (habit: IHabit) => void;
+  currentHabit: IHabit | undefined;
 }
 
-const useHabit = (): IUseHabit => {
+export interface IPropsUseHabit {
+  habitId: string | undefined;
+}
+
+const useHabit = ({ habitId }: IPropsUseHabit): IUseHabit => {
   const [allHabits, setAllHabits] = useState<IHabit[] | []>([]);
   const [currentHabit, setCurrentHabit] = useState<IHabit | undefined>();
-
-  const habitIdRef = useRef(useParams().habitId);
 
   useEffect(() => {
     setAllHabits(() => habits);
@@ -31,9 +33,8 @@ const useHabit = (): IUseHabit => {
   );
 
   useEffect(() => {
-    console.log('set current');
-    manageHabit(habitIdRef.current);
-  }, [manageHabit]);
+    manageHabit(habitId);
+  }, [manageHabit, habitId]);
   const getCurrentHabit = () => currentHabit;
 
   const createNewHabit = (habit: IHabit) => {
@@ -41,7 +42,13 @@ const useHabit = (): IUseHabit => {
     return;
   };
 
-  return { getAllHabits, getCurrentHabit, manageHabit, createNewHabit };
+  return {
+    getAllHabits,
+    getCurrentHabit,
+    manageHabit,
+    createNewHabit,
+    currentHabit,
+  };
 };
 
 export default useHabit;
