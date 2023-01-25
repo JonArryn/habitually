@@ -2,7 +2,7 @@
 import express from 'express';
 
 // Initialize the express engine
-const app: express.Application = express();
+const app = express();
 
 // Take a port 8000 for running server.
 const port: number = 8000;
@@ -17,3 +17,5 @@ app.listen(port, () => {
   console.log(`TypeScript with Express
          http://localhost:${port}/`);
 });
+
+module.exports = app;
