@@ -21,7 +21,7 @@ model Habit {
   @@map(name: "habit")
   id Int @id @default(autoincrement())
   title String @db.VarChar(100)
-  description String
+  description String @db.VarChar(500)
   created_at DateTime @default(now())
   updated_at DateTime @updatedAt
   deleted Boolean @default(false)
