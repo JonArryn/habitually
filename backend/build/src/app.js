@@ -31,13 +31,14 @@ const dotenv = __importStar(require("dotenv"));
 const express_1 = __importDefault(require("express"));
 const cors_1 = __importDefault(require("cors"));
 const morgan_1 = __importDefault(require("morgan"));
-const habit_router_1 = __importDefault(require("./endpoint/habit/habit.router"));
 // initialize .env file configuration
 dotenv.config();
 // Take a port 8000 for running server.
 const port = process.env.PORT;
 // Initialize the express engine
 const app = (0, express_1.default)();
+// > ROUTERS
+const habit_router_1 = __importDefault(require("./endpoint/habit/habit.router"));
 // > MIDDLEWARE
 // logging
 if (process.env.NODE_ENV === 'development') {
@@ -55,8 +56,9 @@ app.use(express_1.default.json());
   req.requestTime = new Date().toISOString();
   next();
 }); */
+// > ROUTES (Still Middleware)
 app.use('/api/habit', habit_router_1.default);
-// Server setup
+// >  SERVER
 app.listen(port, () => {
     console.log(`TypeScript with Express
          http://localhost:${port}/`);

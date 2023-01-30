@@ -4,8 +4,6 @@ import express from 'express';
 import cors from 'cors';
 import morgan from 'morgan';
 
-import habitRouter from './endpoint/habit/habit.router';
-
 // initialize .env file configuration
 dotenv.config();
 
@@ -14,6 +12,10 @@ const port = process.env.PORT;
 
 // Initialize the express engine
 const app = express();
+
+// > ROUTERS
+
+import habitRouter from './endpoint/habit/habit.router';
 
 // > MIDDLEWARE
 
@@ -38,9 +40,11 @@ app.use(express.json());
   next();
 }); */
 
+// > ROUTES (Still Middleware)
+
 app.use('/api/habit', habitRouter);
 
-// Server setup
+// >  SERVER
 app.listen(port, () => {
   console.log(`TypeScript with Express
          http://localhost:${port}/`);
