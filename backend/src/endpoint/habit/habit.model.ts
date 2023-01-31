@@ -1,6 +1,5 @@
 import db from '../../utils/db.server';
 import { Habit } from '@prisma/client';
-import { title } from 'process';
 
 const getAllHabits = async (): Promise<Habit[]> => {
   return db.habit.findMany({});

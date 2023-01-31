@@ -1,0 +1,1 @@
+{"version":3,"file":"checkId.js","sourceRoot":"","sources":["../../../src/helper/checkId.ts"],"names":[],"mappings":";;;;;AAAA,qEAAsC;AAGtC,MAAM,OAAO,GAAG,CAAC,SAAsB,EAAE,EAAU,EAAE,EAAE;IACrD,MAAM,KAAK,GAAG,mBAAE,CAAC,SAAS,CAAC,CAAC;IAC5B,OAAO,KAAK,CAAC,UAAU,CAAC;QACtB,KAAK,EAAE;YACL,EAAE,EAAE,EAAE;SACP;KACF,CAAC,CAAC;AACL,CAAC,CAAC"}

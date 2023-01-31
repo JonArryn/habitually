@@ -33,10 +33,14 @@ var __awaiter = (this && this.__awaiter) || function (thisArg, _arguments, P, ge
         step((generator = generator.apply(thisArg, _arguments || [])).next());
     });
 };
+var __importDefault = (this && this.__importDefault) || function (mod) {
+    return (mod && mod.__esModule) ? mod : { "default": mod };
+};
 Object.defineProperty(exports, "__esModule", { value: true });
-exports.updateHabit = exports.createHabit = exports.getHabitById = exports.getAllHabits = void 0;
+exports.deleteHabit = exports.updateHabit = exports.createHabit = exports.getHabitById = exports.getAllHabits = void 0;
 const HabitService = __importStar(require("./habit.model"));
-const responseObject_1 = require("../helper/responseObject");
+const responseObject_1 = require("../../helper/responseObject");
+const stringToNumber_1 = __importDefault(require("../../helper/stringToNumber"));
 // GET: all habits
 const getAllHabits = (req, res) => __awaiter(void 0, void 0, void 0, function* () {
     try {
@@ -50,7 +54,7 @@ const getAllHabits = (req, res) => __awaiter(void 0, void 0, void 0, function* (
 exports.getAllHabits = getAllHabits;
 // GET: habit by id
 const getHabitById = (req, res) => __awaiter(void 0, void 0, void 0, function* () {
-    const id = parseInt(req.params.id, 10);
+    const id = (0, stringToNumber_1.default)(req.params.id);
     try {
         const habit = yield HabitService.getHabitById(id);
         res.status(200).json((0, responseObject_1.successResponse)(habit));
@@ -76,11 +80,10 @@ exports.createHabit = createHabit;
 // PUT: update habit
 // PARAMS: id
 const updateHabit = (req, res) => __awaiter(void 0, void 0, void 0, function* () {
-    var _a;
-    const id = parseInt((_a = req.params) === null || _a === void 0 ? void 0 : _a.id, 10);
+    const id = (0, stringToNumber_1.default)(req.params.id);
     try {
-        const habit = req.body;
-        const updatedHabit = yield HabitService.updateHabit(habit, id);
+        const newHabitData = req.body;
+        const updatedHabit = yield HabitService.updateHabit(newHabitData, id);
         res.status(200).json((0, responseObject_1.successResponse)(updatedHabit));
     }
     catch (error) {
@@ -88,4 +91,15 @@ const updateHabit = (req, res) => __awaiter(void 0, void 0, void 0, function* ()
     }
 });
 exports.updateHabit = updateHabit;
+const deleteHabit = (req, res) => __awaiter(void 0, void 0, void 0, function* () {
+    const id = (0, stringToNumber_1.default)(req.params.id);
+    try {
+        yield HabitService.deleteHabit(id);
+        res.status(204).json((0, responseObject_1.successResponse)('Habit deleted successfully'));
+    }
+    catch (error) {
+        res.status(400).json((0, responseObject_1.failureResponse)(error.message));
+    }
+});
+exports.deleteHabit = deleteHabit;
 //# sourceMappingURL=habit.controller.js.map

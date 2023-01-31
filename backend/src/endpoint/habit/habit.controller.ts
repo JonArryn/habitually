@@ -5,7 +5,9 @@ import { Request, Response } from 'express';
 
 import * as HabitService from './habit.model';
 
-import { successResponse, failureResponse } from '../helper/responseObject';
+import { successResponse, failureResponse } from '../../helper/responseObject';
+
+import stringToNumber from '../../helper/stringToNumber';
 
 // GET: all habits
 
@@ -20,7 +22,7 @@ const getAllHabits = async (req: Request, res: Response) => {
 
 // GET: habit by id
 const getHabitById = async (req: Request, res: Response) => {
-  const id: number = parseInt(req.params.id, 10);
+  const id: number = stringToNumber(req.params.id);
   try {
     const habit = await HabitService.getHabitById(id);
     res.status(200).json(successResponse(habit));
@@ -43,13 +45,25 @@ const createHabit = async (req: Request, res: Response) => {
 // PUT: update habit
 // PARAMS: id
 const updateHabit = async (req: Request, res: Response) => {
-  const id: number = parseInt(req.params?.id, 10);
+  const id: number = stringToNumber(req.params.id);
   try {
-    const habit = req.body;
-    const updatedHabit = await HabitService.updateHabit(habit, id);
+    const newHabitData = req.body;
+    const updatedHabit = await HabitService.updateHabit(newHabitData, id);
     res.status(200).json(successResponse(updatedHabit));
   } catch (error: any) {
     res.status(400).json(failureResponse(error.message));
   }
 };
-export { getAllHabits, getHabitById, createHabit, updateHabit };
+
+const deleteHabit = async (req: Request, res: Response) => {
+  const id: number = stringToNumber(req.params.id);
+
+  try {
+    await HabitService.deleteHabit(id);
+    res.status(204).json(successResponse('Habit deleted successfully'));
+  } catch (error: any) {
+    res.status(400).json(failureResponse(error.message));
+  }
+};
+
+export { getAllHabits, getHabitById, createHabit, updateHabit, deleteHabit };

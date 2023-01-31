@@ -38,6 +38,8 @@ habitRouter
     .post(habit_middleware_1.validateHabitBody, habitController.createHabit);
 habitRouter
     .route('/:id')
+    .all(habit_middleware_1.checkId)
     .get(habitController.getHabitById)
-    .put(habit_middleware_1.validateHabitBody, habitController.updateHabit);
+    .put(habit_middleware_1.validateHabitBody, habitController.updateHabit)
+    .delete(habitController.deleteHabit);
 //# sourceMappingURL=habit.router.js.map
