@@ -1,5 +1,5 @@
 import { useState, useEffect, useCallback } from 'react';
-import habits, { IHabit } from '../constant/HABITS';
+import habits, { IHabit } from '../type/HABITS';
 
 export interface IUseHabit {
   getAllHabits: () => IHabit[] | [];

@@ -6,7 +6,7 @@ import Button from '@mui/material/Button';
 import Typography from '@mui/material/Typography';
 import { useNavigate } from 'react-router-dom';
 
-import habits, { IHabit } from '../constant/HABITS';
+import { IHabit } from '../type/HABITS';
 
 interface IProps {
   habitData: IHabit;
@@ -14,12 +14,7 @@ interface IProps {
 
 const HabitCard = ({ habitData }: IProps) => {
   const handleDelete = (event: React.MouseEvent<HTMLButtonElement>) => {
-    if (event !== null && event.target instanceof HTMLElement) {
-      const habitToDeleteId = event.target.dataset.habitid;
-      const deletedHabit = habits.find((habit) => habit.id === habitToDeleteId);
-
-      if (deletedHabit) habits.splice(habits.indexOf(deletedHabit), 1);
-    }
+    alert('handle delete not yet wired');
   };
 
   const { id, title, description } = habitData;

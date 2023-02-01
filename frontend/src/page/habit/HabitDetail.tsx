@@ -1,7 +1,10 @@
-import habits, { IHabit } from '../../constant/HABITS';
+import { IHabit } from '../../type/HABITS';
 import { useState, useEffect, useCallback } from 'react';
 
 import { useParams } from 'react-router-dom';
+
+import habituallyApi from '../../util/axiosHabit';
+import axios from 'axios';
 
 import Box from '@mui/material/Box';
 import FormControl from '@mui/material/FormControl';
@@ -22,14 +25,17 @@ const HabitDetail = () => {
 
   const { habitId } = useParams();
 
-  const getHabitByIdParam = useCallback(() => {
-    const currentHabit: IHabit | undefined = habits.find((habit) => {
-      return habitId === habit.id;
+  const getHabitByIdParam = useCallback(async () => {
+    const habitResponse = await habituallyApi.get(`/habit/${habitId}`);
+    const habitData: IHabit = habitResponse.data.data;
+    const { id, title, description } = habitData;
+    setHabit(() => {
+      return { id, title, description };
     });
-    if (currentHabit) setHabit(currentHabit);
   }, [habitId]);
 
   useEffect(() => {
+    console.log('get habit UE');
     getHabitByIdParam();
   }, [getHabitByIdParam]);
 
@@ -42,8 +48,12 @@ const HabitDetail = () => {
     getHabitByIdParam();
   };
 
-  const handleSaveClick = () => {
-    setDetailsDisabled(true);
+  const handleSaveClick = async () => {
+    await habituallyApi.put(`/habit/${habitId}`, {
+      title: habit.title,
+      description: habit.description,
+    });
+    setDetailsDisabled(() => true);
   };
 
   return (
@@ -118,7 +128,7 @@ const HabitDetail = () => {
           <Button
             variant='contained'
             disabled={detailsDisabled}
-            onClick={handleSaveClick}
+            onClick={() => handleSaveClick()}
           >
             Save
           </Button>

@@ -27,7 +27,7 @@ if (process.env.NODE_ENV === 'development') {
 // cors?
 app.use(
   cors({
-    origin: 'http://localhost:8000',
+    origin: 'http://localhost:3000',
   })
 );
 // body parser middleware (called by app.use())

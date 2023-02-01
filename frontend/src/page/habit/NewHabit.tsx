@@ -7,7 +7,7 @@ import Paper from '@mui/material/Paper';
 import TextField from '@mui/material/TextField';
 import Typography from '@mui/material/Typography';
 import { useState } from 'react';
-import habits, { IHabit } from '../../constant/HABITS';
+import habits, { IHabit } from '../../type/HABITS';
 import { useNavigate } from 'react-router-dom';
 
 const NewHabit = () => {
