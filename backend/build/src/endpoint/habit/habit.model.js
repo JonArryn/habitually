@@ -13,13 +13,13 @@ var __importDefault = (this && this.__importDefault) || function (mod) {
 };
 Object.defineProperty(exports, "__esModule", { value: true });
 exports.deleteHabit = exports.updateHabit = exports.createHabit = exports.getHabitById = exports.getAllHabits = void 0;
-const db_server_1 = __importDefault(require("../../utils/db.server"));
+const database_server_1 = __importDefault(require("../../utils/database.server"));
 const getAllHabits = () => __awaiter(void 0, void 0, void 0, function* () {
-    return db_server_1.default.habit.findMany({});
+    return database_server_1.default.habit.findMany({});
 });
 exports.getAllHabits = getAllHabits;
 const getHabitById = (id) => __awaiter(void 0, void 0, void 0, function* () {
-    return db_server_1.default.habit.findUnique({
+    return database_server_1.default.habit.findUnique({
         where: {
             id: id,
         },
@@ -28,7 +28,7 @@ const getHabitById = (id) => __awaiter(void 0, void 0, void 0, function* () {
 exports.getHabitById = getHabitById;
 const createHabit = (habit) => __awaiter(void 0, void 0, void 0, function* () {
     const { title, description } = habit;
-    return yield db_server_1.default.habit.create({
+    return yield database_server_1.default.habit.create({
         data: {
             title: title,
             description: description,
@@ -39,14 +39,14 @@ const createHabit = (habit) => __awaiter(void 0, void 0, void 0, function* () {
 exports.createHabit = createHabit;
 const updateHabit = (habit, id) => __awaiter(void 0, void 0, void 0, function* () {
     const { title, description } = habit;
-    return yield db_server_1.default.habit.update({
+    return yield database_server_1.default.habit.update({
         where: { id: id },
         data: { title: title, description: description },
     });
 });
 exports.updateHabit = updateHabit;
 const deleteHabit = (id) => __awaiter(void 0, void 0, void 0, function* () {
-    yield db_server_1.default.habit.delete({
+    yield database_server_1.default.habit.delete({
         where: { id: id },
     });
 });

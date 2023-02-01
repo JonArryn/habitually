@@ -47,7 +47,7 @@ const validateHabitBody = (req, res, next) => {
 exports.validateHabitBody = validateHabitBody;
 const checkId = (req, res, next) => __awaiter(void 0, void 0, void 0, function* () {
     try {
-        const id = parseInt(req.params.id, 10);
+        const id = Number.parseInt(req.params.id, 10);
         const habit = yield HabitService.getHabitById(id);
         if (!habit) {
             return res
@@ -56,7 +56,9 @@ const checkId = (req, res, next) => __awaiter(void 0, void 0, void 0, function* 
         }
     }
     catch (error) {
-        res.status(500).json((0, responseObject_1.failureResponse)(error.message));
+        res
+            .status(500)
+            .json((0, responseObject_1.failureResponse)(error instanceof Error && error.message));
     }
     next();
 });

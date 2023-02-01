@@ -57,7 +57,7 @@ app.use(express_1.default.json());
   next();
 }); */
 // > ROUTES (Still Middleware)
-app.use('/api/habit', habit_router_1.default);
+app.use('/api/v1/habit', habit_router_1.default);
 // >  SERVER
 app.listen(port, () => {
     console.log(`TypeScript with Express
@@ -67,5 +67,4 @@ app.listen(port, () => {
 app.get('/', (req, res) => {
     res.send('TypeScript With Express');
 });
-module.exports = app;
 //# sourceMappingURL=app.js.map

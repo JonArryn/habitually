@@ -42,7 +42,7 @@ app.use(express.json());
 
 // > ROUTES (Still Middleware)
 
-app.use('/api/habit', habitRouter);
+app.use('/api/v1/habit', habitRouter);
 
 // >  SERVER
 app.listen(port, () => {
@@ -54,5 +54,3 @@ app.listen(port, () => {
 app.get('/', (req, res) => {
   res.send('TypeScript With Express');
 });
-
-module.exports = app;

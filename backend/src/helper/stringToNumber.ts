@@ -1,5 +1,5 @@
 const stringToNumber = (string: string) => {
-  return parseInt(string, 10);
+  return Number.parseInt(string, 10);
 };
 
 export { stringToNumber as default };

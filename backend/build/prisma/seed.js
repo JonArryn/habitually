@@ -12,7 +12,7 @@ var __importDefault = (this && this.__importDefault) || function (mod) {
     return (mod && mod.__esModule) ? mod : { "default": mod };
 };
 Object.defineProperty(exports, "__esModule", { value: true });
-const db_server_1 = __importDefault(require("../src/utils/db.server"));
+const database_server_1 = __importDefault(require("../src/utils/database.server"));
 const getUsers = () => {
     return [
         { id: 1, username: 'bobVila' },
@@ -38,7 +38,7 @@ const getHabits = () => {
 };
 const seed = () => __awaiter(void 0, void 0, void 0, function* () {
     yield Promise.all(getUsers().map((user) => {
-        return db_server_1.default.user.create({
+        return database_server_1.default.user.create({
             data: {
                 username: user.username,
             },
@@ -46,7 +46,7 @@ const seed = () => __awaiter(void 0, void 0, void 0, function* () {
     }));
     yield Promise.all(getHabits().map((habit) => {
         const { title, description } = habit;
-        return db_server_1.default.habit.create({
+        return database_server_1.default.habit.create({
             data: {
                 title: title,
                 description: description,

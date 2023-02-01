@@ -48,7 +48,9 @@ const getAllHabits = (req, res) => __awaiter(void 0, void 0, void 0, function* (
         res.status(200).json((0, responseObject_1.successResponse)(habits));
     }
     catch (error) {
-        res.status(400).json((0, responseObject_1.failureResponse)(error.message));
+        res
+            .status(400)
+            .json((0, responseObject_1.failureResponse)(error instanceof Error && error.message));
     }
 });
 exports.getAllHabits = getAllHabits;
@@ -60,7 +62,9 @@ const getHabitById = (req, res) => __awaiter(void 0, void 0, void 0, function* (
         res.status(200).json((0, responseObject_1.successResponse)(habit));
     }
     catch (error) {
-        res.status(404).json((0, responseObject_1.failureResponse)(error.message));
+        res
+            .status(404)
+            .json((0, responseObject_1.failureResponse)(error instanceof Error && error.message));
     }
 });
 exports.getHabitById = getHabitById;
@@ -73,7 +77,9 @@ const createHabit = (req, res) => __awaiter(void 0, void 0, void 0, function* ()
         res.status(201).json((0, responseObject_1.successResponse)(newHabit));
     }
     catch (error) {
-        res.status(400).json((0, responseObject_1.failureResponse)(error.message));
+        res
+            .status(400)
+            .json((0, responseObject_1.failureResponse)(error instanceof Error && error.message));
     }
 });
 exports.createHabit = createHabit;
@@ -87,7 +93,9 @@ const updateHabit = (req, res) => __awaiter(void 0, void 0, void 0, function* ()
         res.status(200).json((0, responseObject_1.successResponse)(updatedHabit));
     }
     catch (error) {
-        res.status(400).json((0, responseObject_1.failureResponse)(error.message));
+        res
+            .status(400)
+            .json((0, responseObject_1.failureResponse)(error instanceof Error && error.message));
     }
 });
 exports.updateHabit = updateHabit;
@@ -98,7 +106,9 @@ const deleteHabit = (req, res) => __awaiter(void 0, void 0, void 0, function* ()
         res.status(204).json((0, responseObject_1.successResponse)('Habit deleted successfully'));
     }
     catch (error) {
-        res.status(400).json((0, responseObject_1.failureResponse)(error.message));
+        res
+            .status(400)
+            .json((0, responseObject_1.failureResponse)(error instanceof Error && error.message));
     }
 });
 exports.deleteHabit = deleteHabit;

@@ -3,10 +3,9 @@
 Object.defineProperty(exports, "__esModule", { value: true });
 exports.default = void 0;
 const client_1 = require("@prisma/client");
-let database;
-exports.default = database;
-if (!global.__db) {
-    global.__db = new client_1.PrismaClient();
+if (!global.__database) {
+    global.__database = new client_1.PrismaClient();
 }
-exports.default = database = global.__db;
-//# sourceMappingURL=db.server.js.map
+const database = global.__database;
+exports.default = database;
+//# sourceMappingURL=database.server.js.map

@@ -15,8 +15,10 @@ const getAllHabits = async (req: Request, res: Response) => {
   try {
     const habits = await HabitService.getAllHabits();
     res.status(200).json(successResponse(habits));
-  } catch (error: any) {
-    res.status(400).json(failureResponse(error.message));
+  } catch (error: unknown) {
+    res
+      .status(400)
+      .json(failureResponse(error instanceof Error && error.message));
   }
 };
 
@@ -26,8 +28,10 @@ const getHabitById = async (req: Request, res: Response) => {
   try {
     const habit = await HabitService.getHabitById(id);
     res.status(200).json(successResponse(habit));
-  } catch (error: any) {
-    res.status(404).json(failureResponse(error.message));
+  } catch (error: unknown) {
+    res
+      .status(404)
+      .json(failureResponse(error instanceof Error && error.message));
   }
 };
 
@@ -38,8 +42,10 @@ const createHabit = async (req: Request, res: Response) => {
     const habit = req.body;
     const newHabit = await HabitService.createHabit(habit);
     res.status(201).json(successResponse(newHabit));
-  } catch (error: any) {
-    res.status(400).json(failureResponse(error.message));
+  } catch (error: unknown) {
+    res
+      .status(400)
+      .json(failureResponse(error instanceof Error && error.message));
   }
 };
 // PUT: update habit
@@ -50,8 +56,10 @@ const updateHabit = async (req: Request, res: Response) => {
     const newHabitData = req.body;
     const updatedHabit = await HabitService.updateHabit(newHabitData, id);
     res.status(200).json(successResponse(updatedHabit));
-  } catch (error: any) {
-    res.status(400).json(failureResponse(error.message));
+  } catch (error: unknown) {
+    res
+      .status(400)
+      .json(failureResponse(error instanceof Error && error.message));
   }
 };
 
@@ -61,8 +69,10 @@ const deleteHabit = async (req: Request, res: Response) => {
   try {
     await HabitService.deleteHabit(id);
     res.status(204).json(successResponse('Habit deleted successfully'));
-  } catch (error: any) {
-    res.status(400).json(failureResponse(error.message));
+  } catch (error: unknown) {
+    res
+      .status(400)
+      .json(failureResponse(error instanceof Error && error.message));
   }
 };
 

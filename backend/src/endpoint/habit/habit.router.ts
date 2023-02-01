@@ -1,5 +1,4 @@
 import express from 'express';
-import db from '../../utils/db.server';
 
 const habitRouter = express.Router();
 

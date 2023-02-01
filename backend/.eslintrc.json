@@ -1,0 +1,37 @@
+{
+  "env": {
+    "browser": true,
+    "es2021": true
+  },
+  "extends": [
+    "eslint:recommended",
+    "plugin:@typescript-eslint/recommended",
+    "plugin:unicorn/recommended"
+  ],
+  "overrides": [],
+  "parser": "@typescript-eslint/parser",
+  "parserOptions": {
+    "ecmaVersion": "latest",
+    "sourceType": "module"
+  },
+  "plugins": ["@typescript-eslint"],
+  "rules": {
+    "unicorn/prevent-abbreviations": [
+      "error",
+      {
+        "allowList": {
+          "req": true,
+          "res": true,
+          "db": true
+        }
+      }
+    ],
+    "unicorn/filename-case": [
+      "error",
+      {
+        "case": "camelCase"
+      }
+    ],
+    "no-var": "off"
+  }
+}
