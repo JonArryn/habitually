@@ -6,8 +6,9 @@ import Grid from '@mui/material/Grid';
 import Paper from '@mui/material/Paper';
 import TextField from '@mui/material/TextField';
 import Typography from '@mui/material/Typography';
+import habituallyApi from '../../util/axiosHabit';
 import { useState } from 'react';
-import habits, { IHabit } from '../../type/HABITS';
+import { IHabit } from '../../type/HABITS';
 import { useNavigate } from 'react-router-dom';
 
 const NewHabit = () => {
@@ -21,9 +22,13 @@ const NewHabit = () => {
   const handleCancelClick = () => {
     navigate('/habit');
   };
-  const handleSaveClick = () => {
-    habits.push({ ...habit, id: `${habits.length + 1}` });
-    navigate('/habit');
+  const handleSaveClick = async () => {
+    const newHabitResponse = await habituallyApi.post('/habit', {
+      title: habit.title,
+      description: habit.description,
+    });
+
+    navigate(`/habit/${newHabitResponse.data.data.id}`);
   };
 
   return (

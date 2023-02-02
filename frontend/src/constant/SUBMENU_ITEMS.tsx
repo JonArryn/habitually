@@ -8,6 +8,7 @@ export interface SubMenuItem {
   text: string;
   icon: ReactNode;
   route: string;
+  label: string;
 }
 
 export type SubMenuItemObject = {
@@ -16,11 +17,17 @@ export type SubMenuItemObject = {
 
 const SUBMENU_ITEMS: SubMenuItemObject = {
   [ROUTES.HABIT]: [
-    { text: 'Habits Home', icon: <Home sx={{ mr: 1 }} />, route: '/habit' },
+    {
+      text: 'Habits Home',
+      icon: <Home sx={{ mr: 1 }} />,
+      route: '/habit',
+      label: 'habit-home',
+    },
     {
       text: 'New Habit',
       icon: <AddIcon sx={{ mr: 1 }} />,
       route: '/habit/create',
+      label: 'new-habit',
     },
   ],
   [ROUTES.UNHABIT]: [
@@ -28,6 +35,7 @@ const SUBMENU_ITEMS: SubMenuItemObject = {
       text: 'New UnHabit',
       icon: <AddIcon sx={{ mr: 1 }} />,
       route: '/unhabit/create',
+      label: 'new-un-habit',
     },
   ],
   [ROUTES.ROUTINE]: [
@@ -35,6 +43,7 @@ const SUBMENU_ITEMS: SubMenuItemObject = {
       text: 'New Routine',
       icon: <AddIcon sx={{ mr: 1 }} />,
       route: '/routine/create',
+      label: 'new-routine',
     },
   ],
   [ROUTES.TASK]: [
@@ -42,6 +51,7 @@ const SUBMENU_ITEMS: SubMenuItemObject = {
       text: 'New Task',
       icon: <AddIcon sx={{ mr: 1 }} />,
       route: '/task/create',
+      label: 'new-task',
     },
   ],
 };

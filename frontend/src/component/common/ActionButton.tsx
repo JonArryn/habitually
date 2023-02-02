@@ -8,12 +8,14 @@ interface IProps {
   text?: string;
   icon?: ReactNode;
   route?: string;
+  aria?: string;
 }
 
 export default function ActionButton({
   text = 'Action',
   icon = <NavigationIcon sx={{ mr: 1 }} />,
   route,
+  aria,
 }: IProps) {
   const navigate = useNavigate();
   return (
@@ -26,7 +28,7 @@ export default function ActionButton({
         variant='extended'
         size='medium'
         color='primary'
-        aria-label='add'
+        aria-label={aria}
         onClick={() => navigate(`${route}`)}
       >
         {icon}

@@ -62,7 +62,8 @@ const updateHabit = async (req: Request, res: Response) => {
       .json(failureResponse(error instanceof Error && error.message));
   }
 };
-
+// DELETE: delete habit
+// PARAMS: id
 const deleteHabit = async (req: Request, res: Response) => {
   const id: number = stringToNumber(req.params.id);
 

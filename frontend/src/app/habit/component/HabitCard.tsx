@@ -6,7 +6,7 @@ import Button from '@mui/material/Button';
 import Typography from '@mui/material/Typography';
 import { useNavigate } from 'react-router-dom';
 
-import { IHabit } from '../type/HABITS';
+import { IHabit } from '../../../type/HABITS';
 
 interface IProps {
   habitData: IHabit;

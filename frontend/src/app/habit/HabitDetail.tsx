@@ -4,7 +4,6 @@ import { useState, useEffect, useCallback } from 'react';
 import { useParams } from 'react-router-dom';
 
 import habituallyApi from '../../util/axiosHabit';
-import axios from 'axios';
 
 import Box from '@mui/material/Box';
 import FormControl from '@mui/material/FormControl';
@@ -35,7 +34,6 @@ const HabitDetail = () => {
   }, [habitId]);
 
   useEffect(() => {
-    console.log('get habit UE');
     getHabitByIdParam();
   }, [getHabitByIdParam]);
 

@@ -1,8 +1,8 @@
 import Grid from '@mui/material/Grid';
-import HabitCard from '../../component/HabitCard';
-import IHabit from '../../type/HABITS';
+import HabitCard from './HabitCard';
+import IHabit from '../../../type/HABITS';
 import { useState, useEffect } from 'react';
-import habituallyApi from '../../util/axiosHabit';
+import habituallyApi from '../../../util/axiosHabit';
 
 const HabitList = () => {
   const [habits, setHabits] = useState<IHabit[]>([]);

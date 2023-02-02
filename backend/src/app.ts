@@ -7,7 +7,6 @@ import morgan from 'morgan';
 // initialize .env file configuration
 dotenv.config();
 
-// Take a port 8000 for running server.
 const port = process.env.PORT;
 
 // Initialize the express engine
@@ -27,7 +26,7 @@ if (process.env.NODE_ENV === 'development') {
 // cors?
 app.use(
   cors({
-    origin: 'http://localhost:3000',
+    origin: process.env.LOCAL_FRONTEND,
   })
 );
 // body parser middleware (called by app.use())

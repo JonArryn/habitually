@@ -13,7 +13,10 @@ const Habit = () => {
         direction='column'
       >
         <Grid item>
-          <SubMenu subMenuItems={SUBMENU_ITEMS['/habit']} />
+          <SubMenu
+            subMenuItems={SUBMENU_ITEMS['/habit']}
+            pageTitle={'Habits'}
+          />
         </Grid>
         <Grid item>
           <Outlet />

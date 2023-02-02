@@ -25,7 +25,7 @@ const checkId = async (req: Request, res: Response, next: NextFunction) => {
     }
   } catch (error: unknown) {
     res
-      .status(500)
+      .status(404)
       .json(failureResponse(error instanceof Error && error.message));
   }
 

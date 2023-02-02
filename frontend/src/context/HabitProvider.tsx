@@ -1,3 +1,6 @@
+// THIS PROVIDER AND ASSOCIATED HOOK ARE NOT BEING USED YET
+// TO BE REFACTORED FOR BETTER REUSABILITY OR REMOVED
+
 import React, { createContext, ReactNode } from 'react';
 import useHabit, { IUseHabit } from '../hook/useHabit';
 

@@ -5,15 +5,15 @@ import {
   Route,
 } from 'react-router-dom';
 
-import Habit from './page/habit/Habit';
-import Unhabit from './page/Unhabit';
-import Home from './page/Dashboard';
-import Routine from './page/Routine';
-import Task from './page/Task';
+import Habit from './app/habit/Habit';
+import Unhabit from './app/page/Unhabit';
+import Home from './app/page/Dashboard';
+import Routine from './app/page/Routine';
+import Task from './app/page/Task';
 import RootLayout from './component/RootLayout';
-import NewHabit from './page/habit/NewHabit';
-import HabitDetail from './page/habit/HabitDetail';
-import HabitList from './page/habit/HabitList';
+import NewHabit from './app/habit/NewHabit';
+import HabitDetail from './app/habit/HabitDetail';
+import HabitList from './app/habit/component/HabitList';
 
 const router = createBrowserRouter(
   createRoutesFromElements(

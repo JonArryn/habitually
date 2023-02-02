@@ -1,5 +1,7 @@
+// THIS HOOK IS NOT CURRENTLY BEING USED
+
 import { useState, useEffect, useCallback } from 'react';
-import habits, { IHabit } from '../type/HABITS';
+import { IHabit } from '../type/HABITS';
 
 export interface IUseHabit {
   getAllHabits: () => IHabit[] | [];
@@ -18,7 +20,7 @@ const useHabit = ({ habitId }: IPropsUseHabit): IUseHabit => {
   const [currentHabit, setCurrentHabit] = useState<IHabit | undefined>();
 
   useEffect(() => {
-    setAllHabits(() => habits);
+    setAllHabits(() => []);
   }, []);
 
   const getAllHabits = () => allHabits;
@@ -38,7 +40,6 @@ const useHabit = ({ habitId }: IPropsUseHabit): IUseHabit => {
   const getCurrentHabit = () => currentHabit;
 
   const createNewHabit = (habit: IHabit) => {
-    habits.push(habit);
     return;
   };
 
