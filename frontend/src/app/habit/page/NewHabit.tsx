@@ -6,9 +6,9 @@ import Grid from '@mui/material/Grid';
 import Paper from '@mui/material/Paper';
 import TextField from '@mui/material/TextField';
 import Typography from '@mui/material/Typography';
-import habituallyApi from '../../util/axiosHabit';
+import habituallyApi from '../../../util/axiosHabit';
 import { useState } from 'react';
-import { IHabit } from '../../type/HABITS';
+import { IHabit } from '../../../type/HABITS';
 import { useNavigate } from 'react-router-dom';
 
 const NewHabit = () => {
@@ -23,12 +23,16 @@ const NewHabit = () => {
     navigate('/habit');
   };
   const handleSaveClick = async () => {
-    const newHabitResponse = await habituallyApi.post('/habit', {
-      title: habit.title,
-      description: habit.description,
-    });
+    try {
+      const newHabitResponse = await habituallyApi.post('/habit', {
+        title: habit.title,
+        description: habit.description,
+      });
 
-    navigate(`/habit/${newHabitResponse.data.data.id}`);
+      navigate(`/habit/${newHabitResponse.data.data.id}`);
+    } catch (error: unknown) {
+      alert('There was an error creating the new habit');
+    }
   };
 
   return (
@@ -46,7 +50,7 @@ const NewHabit = () => {
       >
         <Paper elevation={3}>
           <Stack spacing={3} sx={{ mb: '10px' }}>
-            <Box sx={{ borderBottom: 1, borderColor: 'divider', mb: '10px' }}>
+            <Box>
               <Grid container justifyContent='space-between' sx={{ mb: '5px' }}>
                 <Grid item>
                   <Typography variant='h6'>Details</Typography>

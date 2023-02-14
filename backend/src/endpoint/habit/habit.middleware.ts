@@ -3,14 +3,30 @@ import { Request, Response, NextFunction } from 'express';
 import * as HabitService from './habit.model';
 import { failureResponse } from '../../helper/responseObject';
 
-const validateHabitBody = (req: Request, res: Response, next: NextFunction) => {
+const validateHabitBody = () => {
+  return [
+    body('title')
+      .isString()
+      .isLength({ min: 5 })
+      .withMessage(
+        'Habit title must be a string and have at least 5 characters'
+      ),
+    body('description')
+      .isString()
+      .withMessage('Habit description must be a string'),
+  ];
+};
+
+const checkForValidationErrors = (
+  req: Request,
+  res: Response,
+  next: NextFunction
+) => {
   const errors = validationResult(req);
-  body('title').isString(), body('description').isString();
 
   if (!errors.isEmpty()) {
     return res.status(400).json({ errors: errors.array() });
   }
-
   next();
 };
 
@@ -32,4 +48,4 @@ const checkId = async (req: Request, res: Response, next: NextFunction) => {
   next();
 };
 
-export { validateHabitBody, checkId };
+export { validateHabitBody, checkForValidationErrors, checkId };

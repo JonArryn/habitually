@@ -13,10 +13,6 @@ interface IProps {
 }
 
 const HabitCard = ({ habitData }: IProps) => {
-  const handleDelete = (event: React.MouseEvent<HTMLButtonElement>) => {
-    alert('handle delete not yet wired');
-  };
-
   const { id, title, description } = habitData;
   const navigate = useNavigate();
   return (
@@ -37,14 +33,6 @@ const HabitCard = ({ habitData }: IProps) => {
             }}
           >
             Manage
-          </Button>
-          <Button
-            size='small'
-            color='error'
-            onClick={(event) => handleDelete(event)}
-            data-habitid={id}
-          >
-            Delete
           </Button>
         </CardActions>
       </Card>

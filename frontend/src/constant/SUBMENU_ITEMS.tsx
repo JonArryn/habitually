@@ -21,7 +21,7 @@ const SUBMENU_ITEMS: SubMenuItemObject = {
       text: 'Habits Home',
       icon: <Home sx={{ mr: 1 }} />,
       route: '/habit',
-      label: 'habit-home',
+      label: 'habits-home',
     },
     {
       text: 'New Habit',

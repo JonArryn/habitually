@@ -4,18 +4,30 @@ const habitRouter = express.Router();
 
 import * as habitController from './habit.controller';
 
-import { checkId, validateHabitBody } from './habit.middleware';
+import {
+  checkId,
+  validateHabitBody,
+  checkForValidationErrors,
+} from './habit.middleware';
 
 habitRouter
   .route('/')
   .get(habitController.getAllHabits)
-  .post(validateHabitBody, habitController.createHabit);
+  .post(
+    validateHabitBody(),
+    checkForValidationErrors,
+    habitController.createHabit
+  );
 
 habitRouter
   .route('/:id')
   .all(checkId)
   .get(habitController.getHabitById)
-  .put(validateHabitBody, habitController.updateHabit)
+  .put(
+    validateHabitBody(),
+    checkForValidationErrors,
+    habitController.updateHabit
+  )
   .delete(habitController.deleteHabit);
 
 export { habitRouter as default };

@@ -5,14 +5,14 @@ import {
   Route,
 } from 'react-router-dom';
 
-import Habit from './app/habit/Habit';
+import Habit from './app/habit/page/Habit';
 import Unhabit from './app/page/Unhabit';
 import Home from './app/page/Dashboard';
 import Routine from './app/page/Routine';
 import Task from './app/page/Task';
 import RootLayout from './component/RootLayout';
-import NewHabit from './app/habit/NewHabit';
-import HabitDetail from './app/habit/HabitDetail';
+import NewHabit from './app/habit/page/NewHabit';
+import HabitDetail from './app/habit/page/HabitDetail';
 import HabitList from './app/habit/component/HabitList';
 
 const router = createBrowserRouter(

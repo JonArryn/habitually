@@ -1,7 +1,7 @@
 import Grid from '@mui/material/Grid';
 import { Outlet } from 'react-router-dom';
-import SubMenu from '../../component/common/SubMenu';
-import SUBMENU_ITEMS from '../../constant/SUBMENU_ITEMS';
+import SubMenu from '../../../component/common/SubMenu';
+import SUBMENU_ITEMS from '../../../constant/SUBMENU_ITEMS';
 
 const Habit = () => {
   return (
