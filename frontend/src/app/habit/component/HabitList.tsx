@@ -1,6 +1,6 @@
 import Grid from '@mui/material/Grid';
 import HabitCard from './HabitCard';
-import IHabit from '../../../type/HABITS';
+import IHabit from '../../../type/HABIT';
 import { useState, useEffect } from 'react';
 import habituallyApi from '../../../util/axiosHabit';
 
@@ -11,6 +11,7 @@ const HabitList = () => {
     const habitResponse = await habituallyApi.get('/habit');
     const habitList: IHabit[] = habitResponse.data.data;
     setHabits(habitList);
+    console.log(habitResponse);
   };
 
   useEffect(() => {

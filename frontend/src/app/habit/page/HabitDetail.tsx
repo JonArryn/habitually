@@ -1,4 +1,4 @@
-import { IHabit } from '../../../type/HABITS';
+import IHabit from '../../../type/HABIT';
 import { useState, useEffect, useCallback } from 'react';
 
 import { useParams, useNavigate } from 'react-router-dom';

@@ -4,12 +4,16 @@ import { MemoryRouter } from 'react-router-dom';
 import Habit from './Habit';
 
 describe('Habit root page component', () => {
-  it('should display habits header and buttons', () => {
-    render(
+  const HabitPage = () => {
+    return (
       <MemoryRouter>
         <Habit />
       </MemoryRouter>
     );
+  };
+
+  it('should display habits header and navigation buttons', () => {
+    render(<HabitPage />);
 
     expect(
       screen.getByRole('heading', {

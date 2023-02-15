@@ -2,13 +2,12 @@ import Box from '@mui/system/Box';
 import Stack from '@mui/system/Stack';
 import Button from '@mui/material/Button';
 import FormControl from '@mui/material/FormControl';
-import Grid from '@mui/material/Grid';
 import Paper from '@mui/material/Paper';
 import TextField from '@mui/material/TextField';
 import Typography from '@mui/material/Typography';
 import habituallyApi from '../../../util/axiosHabit';
 import { useState } from 'react';
-import { IHabit } from '../../../type/HABITS';
+import IHabit from '../../../type/HABIT';
 import { useNavigate } from 'react-router-dom';
 
 const NewHabit = () => {
@@ -28,6 +27,7 @@ const NewHabit = () => {
         title: habit.title,
         description: habit.description,
       });
+      console.log(newHabitResponse);
 
       navigate(`/habit/${newHabitResponse.data.data.id}`);
     } catch (error: unknown) {
@@ -49,14 +49,8 @@ const NewHabit = () => {
         autoComplete='on'
       >
         <Paper elevation={3}>
-          <Stack spacing={3} sx={{ mb: '10px' }}>
-            <Box>
-              <Grid container justifyContent='space-between' sx={{ mb: '5px' }}>
-                <Grid item>
-                  <Typography variant='h6'>Details</Typography>
-                </Grid>
-              </Grid>
-            </Box>
+          <Stack spacing={3}>
+            <Typography variant='h6'>Details</Typography>
             <FormControl>
               <TextField
                 id='habit-title'
@@ -85,14 +79,14 @@ const NewHabit = () => {
                 }}
               />
             </FormControl>
-          </Stack>
-          <Stack direction='row' spacing={2} justifyContent='flex-end'>
-            <Button variant='text' color='error' onClick={handleCancelClick}>
-              Cancel
-            </Button>
-            <Button variant='contained' onClick={handleSaveClick}>
-              Save
-            </Button>
+            <Stack direction='row' spacing={2} justifyContent='flex-end'>
+              <Button variant='text' color='error' onClick={handleCancelClick}>
+                Cancel
+              </Button>
+              <Button variant='contained' onClick={handleSaveClick}>
+                Save
+              </Button>
+            </Stack>
           </Stack>
         </Paper>
       </Box>
