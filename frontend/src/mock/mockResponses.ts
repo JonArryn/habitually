@@ -31,5 +31,22 @@ const getHabitSuccessResponse = (
     })
   );
 };
+const getOneHabitSuccessResponse = (
+  req: RestRequest,
+  res: ResponseComposition,
+  ctx: RestContext
+) => {
+  return res(
+    ctx.json({
+      data: [
+        {
+          id: '1',
+          title: 'Test Habit Title 1',
+          description: 'Test Habit Description 1',
+        },
+      ],
+    })
+  );
+};
 
-export { getHabitSuccessResponse };
+export { getHabitSuccessResponse, getOneHabitSuccessResponse };

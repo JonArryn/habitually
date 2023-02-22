@@ -20,3 +20,8 @@
 }
 // updated react-scripts with npm i react-scripts
 // > After the above I was good to go it seemed
+
+// // TESTING // //
+// > > Found a good article on testing in react which covers many scenarios and is a good general guide
+// > https://blog.sapegin.me/all/react-testing-3-jest-and-react-testing-library/
+//

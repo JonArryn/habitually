@@ -1,3 +1,4 @@
+import { useState, useEffect } from 'react';
 import Box from '@mui/material/Box';
 import Card from '@mui/material/Card';
 import CardActions from '@mui/material/CardActions';
@@ -15,9 +16,19 @@ interface IProps {
 const HabitCard = ({ habitData }: IProps) => {
   const { id, title, description } = habitData;
   const navigate = useNavigate();
+
+  const [manageHabit, setManageHabit] = useState(false);
+
+  useEffect(() => {
+    if (manageHabit) {
+      navigate(`${id}`);
+      setManageHabit(false);
+    }
+  }, [id, manageHabit, navigate]);
+
   return (
     <Box sx={{ minWidth: 275 }}>
-      <Card variant='outlined' id={id}>
+      <Card variant='outlined' id={id} key={id}>
         <CardContent>
           <Typography variant='h5' component='div' sx={{ mb: '10px' }}>
             {title}
@@ -27,9 +38,10 @@ const HabitCard = ({ habitData }: IProps) => {
         </CardContent>
         <CardActions>
           <Button
+            aria-label='manage-habit'
             size='small'
             onClick={() => {
-              navigate(`${id}`);
+              setManageHabit(true);
             }}
           >
             Manage

@@ -11,7 +11,6 @@ const HabitList = () => {
     const habitResponse = await habituallyApi.get('/habit');
     const habitList: IHabit[] = habitResponse.data.data;
     setHabits(habitList);
-    console.log(habitResponse);
   };
 
   useEffect(() => {
