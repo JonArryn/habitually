@@ -1,6 +1,6 @@
 import Typography from '@mui/material/Typography';
 import Grid from '@mui/material/Grid';
-import { SubMenuItem } from '../../constant/SUBMENU_ITEMS';
+import { SubMenuItem } from '../../../constant/SUBMENU_ITEMS';
 import ActionButton from './ActionButton';
 import { Stack } from '@mui/system';
 

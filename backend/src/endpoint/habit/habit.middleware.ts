@@ -36,7 +36,7 @@ const checkId = async (req: Request, res: Response, next: NextFunction) => {
     const habit = await HabitService.getHabitById(id);
     if (!habit) {
       return res
-        .status(400)
+        .status(404)
         .json(failureResponse('record not found by the provided ID'));
     }
   } catch (error: unknown) {

@@ -4,7 +4,7 @@ import Toolbar from '@mui/material/Toolbar';
 import Button from '@mui/material/Button';
 import IconButton from '@mui/material/IconButton';
 import MenuIcon from '@mui/icons-material/Menu';
-import mainNavbarItems from '../constant/NAVBAR';
+import mainNavbarItems from '../../constant/NAVBAR';
 import { useNavigate } from 'react-router-dom';
 import Grid from '@mui/material/Grid';
 import { Link } from '@mui/material';

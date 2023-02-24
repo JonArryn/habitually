@@ -11,7 +11,7 @@ const habitHandlers: RestHandler[] = [
     getHabitSuccessResponse
   ),
   rest.get(
-    `${process.env.REACT_APP_DEV_API_URL}${ENDPOINTS.HABIT}/:id`,
+    `${process.env.REACT_APP_DEV_API_URL}${ENDPOINTS.HABIT}/:habitId`,
     getOneHabitSuccessResponse
   ),
 ];

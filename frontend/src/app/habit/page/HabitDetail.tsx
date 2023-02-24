@@ -13,7 +13,7 @@ import Grid from '@mui/material/Grid';
 import Button from '@mui/material/Button';
 import TextField from '@mui/material/TextField';
 import Paper from '@mui/material/Paper';
-import AlertModalButton from '../../../component/AlertModalButton';
+import AlertModalButton from '../../component/AlertModalButton';
 
 const HabitDetail = () => {
   const [habit, setHabit] = useState<IHabit>({
@@ -27,13 +27,17 @@ const HabitDetail = () => {
   const navigate = useNavigate();
 
   const getHabitByIdParam = useCallback(async () => {
-    const habitResponse = await habituallyApi.get(`/habit/${habitId}`);
-    const habitData: IHabit = habitResponse.data.data;
-    const { id, title, description } = habitData;
-    setHabit(() => {
-      return { id, title, description };
-    });
-  }, [habitId]);
+    try {
+      const habitResponse = await habituallyApi.get(`/habit/${habitId}`);
+      const habitData: IHabit = habitResponse.data.data;
+      const { id, title, description } = habitData;
+      setHabit(() => {
+        return { id, title, description };
+      });
+    } catch (error: any) {
+      navigate('../../error');
+    }
+  }, [habitId, navigate]);
 
   const deleteHabit = async (habitId: string) => {
     try {
