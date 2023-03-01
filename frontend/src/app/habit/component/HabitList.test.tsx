@@ -1,15 +1,11 @@
 import HabitList from './HabitList';
-import { server } from 'mock/mockServer';
 import { render, screen } from '@testing-library/react';
+import { server } from '../../../mock/mockServer';
 import { MemoryRouter } from 'react-router-dom';
-
-beforeAll(() => server.listen());
-
-afterEach(() => server.resetHandlers());
-
-afterAll(() => server.close());
+import { habitHandlers } from 'mock/mockHandlers';
 
 describe('Habit List Component', () => {
+  server.use(habitHandlers.getAllHabits);
   it('Should display tiled grid of habits', async () => {
     render(<HabitList />, { wrapper: MemoryRouter });
 

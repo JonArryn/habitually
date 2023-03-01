@@ -6,7 +6,7 @@ import { getHabitById } from 'mock/mockData';
 import HabitCard from './HabitCard';
 
 describe('HabitCard component', () => {
-  const singleHabit = getHabitById;
+  const singleHabit = getHabitById.data;
 
   const TestDetailPage = () => {
     const { habitId } = useParams();

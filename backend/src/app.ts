@@ -19,9 +19,8 @@ import habitRouter from './endpoint/habit/habit.router';
 // > MIDDLEWARE
 
 // logging
-if (process.env.NODE_ENV === 'development') {
-  app.use(morgan('dev'));
-}
+
+app.use(morgan('dev'));
 
 // cors?
 app.use(

@@ -1,15 +1,11 @@
 import { render, screen } from '@testing-library/react';
 import userEvent from '@testing-library/user-event';
+import ErrorPage from 'app/page/ErrorPage';
+import { mockGetEndpoint } from 'mock/handlerBuilders';
 import { server } from 'mock/mockServer';
-import { ReactElement, ReactHTMLElement } from 'react';
+import { habitHandlers } from 'mock/mockHandlers';
 import { MemoryRouter, Route, Routes } from 'react-router-dom';
 import HabitDetail from './HabitDetail';
-
-beforeAll(() => server.listen());
-
-afterEach(() => server.resetHandlers());
-
-afterAll(() => server.close());
 
 interface iProps {
   habitId: number;
@@ -20,6 +16,7 @@ const HabitDetailWithRoutes = ({ habitId }: iProps) => {
     <MemoryRouter initialEntries={[`/habit/${habitId}`]}>
       <Routes>
         <Route path='/habit/:habitId' element={<HabitDetail />} />
+        <Route path='/error' element={<ErrorPage />} />
       </Routes>
     </MemoryRouter>
   );
@@ -32,7 +29,9 @@ const clickEdit = async () => {
 };
 
 describe('Habit detail page', () => {
+  server.use(habitHandlers.getOneHabit);
   it('Should display the habit details', async () => {
+    server.use();
     render(<HabitDetailWithRoutes habitId={1} />);
 
     expect(
@@ -52,10 +51,14 @@ describe('Habit detail page', () => {
     ).toBeInTheDocument();
   });
   it('Should navigate to error page if habit ID is not found', async () => {
+    server.use(
+      mockGetEndpoint('/habit/:id', 404, [{ message: '404 Not Found' }])
+    );
+
     render(<HabitDetailWithRoutes habitId={99} />);
 
     expect(
-      await screen.findByRole('heading', { name: /oops!/i })
+      await screen.findByRole('heading', { name: /oops!/i }, { timeout: 4000 })
     ).toBeInTheDocument();
   });
   it('Should disable editing when edit mode is not active', async () => {});

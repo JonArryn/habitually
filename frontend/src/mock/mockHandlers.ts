@@ -1,19 +1,11 @@
-import ENDPOINTS from 'constant/ENDPOINTS';
-import { rest, RestHandler } from 'msw';
-import {
-  getHabitSuccessResponse,
-  getOneHabitSuccessResponse,
-} from './mockResponses';
+import { mockGetEndpoint } from './handlerBuilders';
+import { getAllHabits, getHabitById } from './mockData';
 
-const habitHandlers: RestHandler[] = [
-  rest.get(
-    `${process.env.REACT_APP_DEV_API_URL}${ENDPOINTS.HABIT}`,
-    getHabitSuccessResponse
-  ),
-  rest.get(
-    `${process.env.REACT_APP_DEV_API_URL}${ENDPOINTS.HABIT}/:habitId`,
-    getOneHabitSuccessResponse
-  ),
-];
+const habitHandlers = {
+  getAllHabits: mockGetEndpoint('/habit', 200, getAllHabits),
+  getOneHabit: mockGetEndpoint('/habit/:id', 200, getHabitById),
+};
 
-export { habitHandlers };
+const mockHandlers = { ...habitHandlers };
+
+export { habitHandlers, mockHandlers };
