@@ -31,9 +31,7 @@ const HabitDetail = () => {
       const habitResponse = await habituallyApi.get(`/habit/${habitId}`);
       const habitData: IHabit = habitResponse.data.data;
       const { id, title, description } = habitData;
-      setHabit(() => {
-        return { id, title, description };
-      });
+      setHabit({ id, title, description });
     } catch (error: any) {
       navigate('../../error');
     }
@@ -123,6 +121,7 @@ const HabitDetail = () => {
               <TextField
                 id='habit-title'
                 value={habit?.title}
+                key='habit-title'
                 label='Habit Title'
                 disabled={detailsDisabled}
                 variant={detailsDisabled ? 'filled' : 'outlined'}
@@ -137,6 +136,7 @@ const HabitDetail = () => {
               <TextField
                 id='habit-description'
                 label='Habit Description'
+                key='habit-description'
                 multiline
                 rows={4}
                 value={habit?.description}
